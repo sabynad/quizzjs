@@ -54,8 +54,25 @@ const questions = [
 /*************************/
 /* Contenu du DOM chargé */
 /*************************/
+
+let question = document.querySelector("#question");
+let answers = document.querySelector("#answers");
+let score = 0;
+
+
 document.addEventListener("DOMContentLoaded", () => {
-  
+
 // démarrage du quizz
-  
+
+
+for(let i = 0; i < questions.length; i ++ ){
+  console.log(questions[0]);
+  for(questions[0] === answers[0]){
+    console.log("bonne reponse");
+
+  }else{
+    console.log("mauvaise réponse");
+  }
+}
+
 });
