@@ -58,21 +58,23 @@ const questions = [
 let question = document.querySelector("#question");
 let answers = document.querySelector("#answers");
 let score = 0;
+let affichageQuestion = innerHTML = question;
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
 // démarrage du quizz
 
 
 for(let i = 0; i < questions.length; i ++ ){
-  console.log(questions[0]);
-  for(questions[0] === answers[0]){
-    console.log("bonne reponse");
+  console.log(questions);
 
-  }else{
-    console.log("mauvaise réponse");
-  }
+
+//   if(questions[0] === answers[0]) {
+//     console.log("bonne reponse");
+
+//   }else{
+//     console.log("mauvaise réponse");
+//   }
 }
 
 });
