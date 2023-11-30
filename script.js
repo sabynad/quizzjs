@@ -57,24 +57,66 @@ const questions = [
 
 let question = document.querySelector("#question");
 let answers = document.querySelector("#answers");
+let containerScore = document.querySelector("#score");
 let score = 0;
-let affichageQuestion = innerHTML = question;
+let indexQuestion = 0;
+let bonneRepIndex = questions[indexQuestion].correctAnswerIndex;
+let bonneReponse = questions[indexQuestion].answers[bonneRepIndex]
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
-// démarrage du quizz
 
+  // ----------------------------------------affichage du quizz-----------------------------------------
+  genereQuestion();   
+  function genereQuestion() {
+    question.innerText = questions[indexQuestion].question;
 
-for(let i = 0; i < questions.length; i ++ ){
-  console.log(questions);
+     bonneRepIndex = questions[indexQuestion].correctAnswerIndex;
+     bonneReponse = questions[indexQuestion].answers[bonneRepIndex]
 
+    for(let i = 0; i < questions[indexQuestion].answers.length; i++){
+      let reponse = document.createElement("li");
+      reponse.classList.add("answer");
+      reponse.innerText = questions[indexQuestion].answers[i];
+      answers.appendChild(reponse);
+    }
+    
+  };
 
-//   if(questions[0] === answers[0]) {
-//     console.log("bonne reponse");
+      // ------------------------------------démarrage du quizz-----------------------------------------
+      answers.addEventListener("click", (event) => {       
+      // console.log(event.target.innerText);
+      // console.log("bonne rep ", questions[indexQuestion].answers[bonneRepIndex]);
+       
+       function toto() { 
+        if (event.target.innerText == bonneReponse ) { 
+        indexQuestion ++;
+        score ++;
+        containerScore.innerText = score;
+        answers.innerText = ""; //efface precedente reponse   
+        genereQuestion();  
+             
+        }else{
+          indexQuestion ++;
+          answers.innerText = ""; //efface precedente reponse
+          
+        genereQuestion(); 
+        }
+        } 
 
-//   }else{
-//     console.log("mauvaise réponse");
-//   }
-}
-
+        // -----------------------------------fin du quizz-----------------------------------------
+        
+        if (indexQuestion < questions.length ){
+          question.innerText = `Merci d'avoir répondu :) votre score est de ${score} sur 4`;
+          toto();
+        }else{
+          
+          containerScore.innerText = score;
+          answers.innerText = "";
+        }
+ 
+    })
 });
+
+//|| 
